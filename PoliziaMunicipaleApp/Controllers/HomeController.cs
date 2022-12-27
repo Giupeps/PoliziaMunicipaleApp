@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebGrease;
 
 namespace PoliziaMunicipaleApp.Controllers
 {
@@ -50,6 +51,7 @@ namespace PoliziaMunicipaleApp.Controllers
 
         public ActionResult NuovoVerbale (int id) 
         {
+            TempData["id"] = id;
             Violazione.DropdownViolazioni.Clear();
             Violazione.GetViolazioneDropdown();
             ViewBag.DropdownViolazioni = Violazione.DropdownViolazioni;
@@ -58,6 +60,38 @@ namespace PoliziaMunicipaleApp.Controllers
             return View();
         }
 
+       [HttpPost]
+        public ActionResult NuovoVerbale(Verbale ve)
+        {
+            int id = Convert.ToInt32(TempData["id"]);
+            Verbale.CreaVerbale(ve, id);
+            return RedirectToAction("Index");
+        }
 
+        public ActionResult MostraVerbali()
+        {
+            return View();
+        }
+
+        public ActionResult PVTotTrasgr()
+        {
+           
+            return PartialView("_PVTotTrasgr", Verbale.ListaVerbTrasgr());
+
+        }
+
+        public ActionResult PVPtTrasgr()
+        {
+            return PartialView("_PVPtTrasgr", Verbale.ListaPtTrasgr());
+        }
+
+        public ActionResult PVOverTenPoints()
+        {
+            return PartialView("_PVOverTenPoints", Verbale.ListaOverTenPoints());
+        }
+        public ActionResult PVCostoMaggiore()
+        {
+            return PartialView("_PVCostoMaggiore", Verbale.ListaCostoMaggiore());
+        }
     }
 }

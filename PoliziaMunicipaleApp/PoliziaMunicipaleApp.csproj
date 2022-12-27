@@ -201,6 +201,12 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\NuovaViolazione.cshtml" />
     <Content Include="Views\Home\NuovoVerbale.cshtml" />
+    <Content Include="Views\Home\MostraVerbali.cshtml" />
+    <Content Include="Views\Home\_PVTotTrasgr.cshtml" />
+    <Content Include="Views\Home\Violazioni.cshtml" />
+    <Content Include="Views\Home\_PVPtTrasgr.cshtml" />
+    <Content Include="Views\Home\_PVOverTenPoints.cshtml" />
+    <Content Include="Views\Home\_PVCostoMaggiore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

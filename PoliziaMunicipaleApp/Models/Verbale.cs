@@ -180,7 +180,7 @@ namespace PoliziaMunicipaleApp
             try
             {
                 con.Open();
-                SqlDataReader reader = Connection.GetReader("select Cognome, Nome, VIOLAZIONE.descrizione, VERBALE.Importo from VERBALE left join ANAGRAFICA on VERBALE.Idanagrafica = ANAGRAFICA.IDAnagrafica right join VIOLAZIONE on VERBALE.Idviolazione = VIOLAZIONE.Idviolazione group by Cognome, Nome,VIOLAZIONE.descrizione, VERBALE.Importo having Importo >= 400", con);
+                SqlDataReader reader = Connection.GetReader("select Cognome, Nome, VIOLAZIONE.descrizione, VERBALE.Importo from VERBALE left join ANAGRAFICA on VERBALE.Idanagrafica = ANAGRAFICA.IDAnagrafica right join VIOLAZIONE on VERBALE.Idviolazione = VIOLAZIONE.Idviolazione group by Cognome, Nome,VIOLAZIONE.descrizione, VERBALE.Importo having Importo > 400", con);
 
                 if (reader.HasRows)
                 {
@@ -191,7 +191,7 @@ namespace PoliziaMunicipaleApp
                         ve.Importo = Convert.ToInt32(reader["Importo"]);
 
                         Violazione v = new Violazione();
-                        v.Idviolazione = v;
+                        ve.Idviolazione = v;
                         v.Descrizione = reader["Descrizione"].ToString();
 
                         Trasgressore t = new Trasgressore();
